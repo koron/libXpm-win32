@@ -31,7 +31,7 @@
 *                                                                             *
 *  Developed by Arnaud Le Hors                                                *
 \*****************************************************************************/
-/* $XFree86: xc/extras/Xpm/lib/scan.c,v 1.3 2002/01/07 19:40:49 dawes Exp $ */
+/* $XFree86$ */
 
 /*
  * The code related to FOR_MSW has been added by
