@@ -182,12 +182,6 @@ fail2:
 /*
  * open the given file to be read as an xpmData which is returned.
  */
-#ifndef NO_ZPIPE
-	FILE *s_popen(char *cmd, const char *type);
-#else
-#	define s_popen popen
-#endif
-
 static int
 OpenReadFile(filename, mdata)
     char *filename;
