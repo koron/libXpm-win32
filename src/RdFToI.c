@@ -259,15 +259,6 @@ static void
 xpmDataClose(mdata)
     xpmData *mdata;
 {
-    switch (mdata->type) {
-    case XPMFILE:
-      if (mdata->stream.file != (stdin))
-	  fclose(mdata->stream.file);
-      break;
-#ifndef NO_ZPIPE
-    case XPMPIPE:
-      pclose(mdata->stream.file);
-      break;
-#endif
-    }
+    if (mdata->stream.file != (stdin))
+	fclose(mdata->stream.file);
 }
