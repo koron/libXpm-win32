@@ -22,7 +22,7 @@
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from GROUPE BULL.
  */
-/* $XFree86: xc/extras/Xpm/lib/parse.c,v 1.3 2001/10/28 03:32:10 tsi Exp $ */
+/* $XFree86: xc/extras/Xpm/lib/parse.c,v 1.2 2000/09/26 15:56:43 tsi Exp $ */
 
 /*****************************************************************************\
 * parse.c:                                                                    *
@@ -33,7 +33,7 @@
 *                                                                             *
 *  Developed by Arnaud Le Hors                                                *
 \*****************************************************************************/
-/* $XFree86: xc/extras/Xpm/lib/parse.c,v 1.3 2001/10/28 03:32:10 tsi Exp $ */
+/* $XFree86$ */
 
 /*
  * The code related to FOR_MSW has been added by
