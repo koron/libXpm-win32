@@ -22,7 +22,7 @@
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from GROUPE BULL.
  */
-/* $XFree86: xc/extras/Xpm/lib/XpmI.h,v 1.9 2003/08/06 14:03:58 eich Exp $ */
+/* $XFree86: xc/extras/Xpm/lib/XpmI.h,v 1.7 2001/11/01 23:35:25 dawes Exp $ */
 
 /*****************************************************************************\
 * XpmI.h:                                                                     *
