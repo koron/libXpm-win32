@@ -31,7 +31,7 @@
 *                                                                             *
 *  Developed by Arnaud Le Hors                                                *
 \*****************************************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/extras/Xpm/lib/data.c,v 1.4 2002/01/07 19:40:49 dawes Exp $ */
 
 #ifndef CXPMPROG
 #if 0

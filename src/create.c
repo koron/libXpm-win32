@@ -32,7 +32,7 @@
 *                                                                             *
 *  Developed by Arnaud Le Hors                                                *
 \*****************************************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/extras/Xpm/lib/create.c,v 1.5 2003/10/07 21:25:37 herrb Exp $ */
 
 /*
  * The code related to FOR_MSW has been added by

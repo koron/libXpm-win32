@@ -22,7 +22,7 @@
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from Arnaud LE HORS.
  */
-/* $XFree86$ */
+/* $XFree86: xc/extras/Xpm/cxpm/cxpm.c,v 1.3 2003/05/27 16:45:41 tsi Exp $ */
 
 /*****************************************************************************\
 * cxpm.c:                                                                     *
