@@ -1,4 +1,4 @@
-/* $XdotOrg: xc/extras/Xpm/lib/create.c,v 1.2.4.1 2004/09/15 15:47:39 daniel Exp $ */
+/* $XdotOrg: xc/extras/Xpm/lib/create.c,v 1.4 2004/11/25 21:19:11 herrb Exp $ */
 /*
  * Copyright (C) 1989-95 GROUPE BULL
  *
@@ -1215,10 +1215,10 @@ PutImagePixels(image, width, height, pixelindex, pixels)
     register char *src;
     register char *dst;
     register unsigned int *iptr;
-    register unsigned int x, y, i;
+    register unsigned int x, y;
     register char *data;
     Pixel pixel, px;
-    int nbytes, depth, ibu, ibpp;
+    int nbytes, depth, ibu, ibpp, i;
 
     data = image->data;
     iptr = pixelindex;
