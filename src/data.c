@@ -375,7 +375,7 @@ xpmGetCmt(data, cmt)
 {
     if (!data->type)
 	*cmt = NULL;
-    else if (data->CommentLength) {
+    else if (data->CommentLength != 0 && data->CommentLength < SIZE_MAX - 1) {
 	*cmt = (char *) XpmMalloc(data->CommentLength + 1);
 	strncpy(*cmt, data->Comment, data->CommentLength);
 	(*cmt)[data->CommentLength] = '\0';
