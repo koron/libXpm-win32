@@ -35,6 +35,9 @@
 
 /* October 2004, source code review by Thomas Biege <thomas@suse.de> */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "XpmI.h"
 #ifndef NO_ZPIPE
 #include <fcntl.h>

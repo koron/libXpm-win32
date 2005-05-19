@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: Xpm
+Description: X Pixmap Library
+Version: @PACKAGE_VERSION@
+Libs: -L${libdir} -lXpm @XPM_LIBS@ @LIBS@
+Cflags: -I${includedir} @XPM_CFLAGS@

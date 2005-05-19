@@ -45,6 +45,9 @@
 
 /* October 2004, source code review by Thomas Biege <thomas@suse.de> */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 #include "XpmI.h"
 
 #define MAXPRINTABLE 92			/* number of printable ascii chars
