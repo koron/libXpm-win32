@@ -1,0 +1,4 @@
+2005-05-19  Soren Sandmann <ssp@aware-of-vacuity.boston.redhat.com>
+
+	* sxpm/Makefile.am: Add $(top_builddir)/include to INCLUDES
+

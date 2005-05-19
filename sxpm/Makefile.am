@@ -4,6 +4,8 @@ bin_PROGRAMS = sxpm
 
 sxpm_CFLAGS = $(SXPM_CFLAGS)
 
+INCLUDES = -I$(top_builddir)/include
+
 sxpm_MANS =			\
 	sxpm.1
 
