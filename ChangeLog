@@ -1,3 +1,8 @@
+2005-06-09  Alexander Gottwald  <ago@freedesktop.org>
+
+	* cxpm/Makefile.am: Use $(top_srcdir)/src instead of $(top_builddir)/src
+	in INCLUDES
+
 2005-05-19  Soren Sandmann <ssp@aware-of-vacuity.boston.redhat.com>
 
 	* sxpm/Makefile.am: Add $(top_builddir)/include to INCLUDES
