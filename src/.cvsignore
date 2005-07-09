@@ -1,0 +1,6 @@
+.deps
+.libs
+libXpm.la
+*.lo
+Makefile
+Makefile.in
