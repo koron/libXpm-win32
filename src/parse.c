@@ -50,7 +50,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#ifdef HAS_STRLCAT
+#if defined(HAS_STRLCAT) || defined(HAVE_STRLCAT)
 # define STRLCAT(dst, src, dstsize) do { \
   	if (strlcat(dst, src, dstsize) >= (dstsize)) \
 	    return (XpmFileInvalid); } while(0)
