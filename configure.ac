@@ -19,6 +19,9 @@ AC_SUBST(XPM_LIBS)
 # Checks for header files.
 AC_HEADER_STDC
 
+# Checks for functions
+AC_CHECK_FUNCS([strlcat])
+
 # Checks for typedefs, structures, and compiler characteristics.
 
 if test "x$GCC" = "xyes"; then
