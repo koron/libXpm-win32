@@ -6,7 +6,7 @@ AM_CFLAGS = -I.						\
 	    -I$(top_srcdir)/include/X11/		\
             $(XPM_CFLAGS)
 
-libXpm_la_LDFLAGS = -version-number 4:5:1 -no-undefined
+libXpm_la_LDFLAGS = -version-number 4:11:0 -no-undefined
 libXpm_la_LIBADD =  $(XPM_LIBS)
 
 libXpm_la_SOURCES =					\
