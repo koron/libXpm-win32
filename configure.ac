@@ -1,5 +1,5 @@
 AC_PREREQ(2.57)
-AC_INIT([libXpm], 3.5.2, [daniel@freedesktop.org], libXpm)
+AC_INIT([libXpm], 3.5.2, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXpm)
 AC_CONFIG_SRCDIR([Makefile.am])
 AM_INIT_AUTOMAKE([dist-bzip2])
 
@@ -35,6 +35,8 @@ fi
 PKG_CHECK_MODULES(SXPM, xt xext, build_sxpm=true, build_sxpm=false)
 
 AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
+
+XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile
            src/Makefile
