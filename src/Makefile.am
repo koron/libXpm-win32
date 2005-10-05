@@ -39,8 +39,9 @@ libXpm_la_SOURCES =					\
 	parse.c						\
 	rgb.c						\
 	rgbtab.h					\
-	scan.c						\
-	simx.h
+	scan.c
 
 libXpmincludedir = $(includedir)/X11
 libXpminclude_HEADERS = $(top_srcdir)/include/X11/xpm.h
+
+EXTRA_DIST = amigax.c amigax.h simx.c simx.h
