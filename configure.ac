@@ -1,3 +1,5 @@
+# $Id$
+
 AC_PREREQ(2.57)
 AC_INIT([libXpm], 3.5.3, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXpm)
 AC_CONFIG_SRCDIR([Makefile.am])
@@ -31,6 +33,15 @@ if test "x$GCC" = "xyes"; then
 	CFLAGS="$GCC_WARNINGS $CFLAGS"
 fi
 
+# Optional feature: When ___.xpm is requested, also look for ___.xpm.Z & .gz
+# Replaces ZFILEDEF = -DSTAT_ZFILE in old Imakefile
+AC_ARG_ENABLE(stat-zfile,
+	AC_HELP_STRING([--enable-stat-zfile],
+			[Search for files with .Z & .gz extensions automatically @<:@default=yes@:>@]),
+              [STAT_ZFILE=$enableval], [STAT_ZFILE=yes])
+if test x$STAT_ZFILE = xyes ; then
+	AC_DEFINE(STAT_ZFILE, 1, [Define to 1 to automatically look for files with .Z & .gz extensions])
+fi
 
 PKG_CHECK_MODULES(SXPM, xt xext, build_sxpm=true, build_sxpm=false)
 
