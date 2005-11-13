@@ -47,6 +47,7 @@ PKG_CHECK_MODULES(SXPM, xt xext, build_sxpm=true, build_sxpm=false)
 
 AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
 
+XORG_MANPAGE_SECTIONS
 XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile
