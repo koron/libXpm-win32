@@ -43,7 +43,7 @@ if test x$STAT_ZFILE = xyes ; then
 	AC_DEFINE(STAT_ZFILE, 1, [Define to 1 to automatically look for files with .Z & .gz extensions])
 fi
 
-PKG_CHECK_MODULES(SXPM, xt xext, build_sxpm=true, build_sxpm=false)
+PKG_CHECK_MODULES(SXPM, xt xext xextproto, build_sxpm=true, build_sxpm=false)
 
 AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
 
