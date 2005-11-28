@@ -5,7 +5,7 @@ cxpm_CFLAGS = $(XPM_CFLAGS) -I$(top_srcdir)/src -I$(top_srcdir)/include/X11
 cxpm_SOURCES = cxpm.c
 
 # Man page
-appmandir =  $(mandir)/man$(APP_MAN_SUFFIX)
+appmandir = $(APP_MAN_DIR)
 
 appman_SOURCES = cxpm.man
 appman_DATA = $(appman_SOURCES:man=@APP_MAN_SUFFIX@)

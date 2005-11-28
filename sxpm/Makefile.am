@@ -11,7 +11,7 @@ sxpm_SOURCES = sxpm.c
 sxpm_LDADD = $(XPM_LIBS) $(SXPM_LIBS) $(top_builddir)/src/libXpm.la
 
 # Man page
-appmandir =  $(mandir)/man$(APP_MAN_SUFFIX)
+appmandir = $(APP_MAN_DIR)
 
 appman_SOURCES = sxpm.man
 appman_DATA = $(appman_SOURCES:man=@APP_MAN_SUFFIX@)
