@@ -13,8 +13,8 @@ sxpm_LDADD = $(XPM_LIBS) $(SXPM_LIBS) $(top_builddir)/src/libXpm.la
 # Man page
 appmandir = $(APP_MAN_DIR)
 
-appman_SOURCES = sxpm.man
-appman_DATA = $(appman_SOURCES:man=@APP_MAN_SUFFIX@)
+appman_PRE = sxpm.man
+appman_DATA = $(appman_PRE:man=@APP_MAN_SUFFIX@)
 
 CLEANFILES = $(appman_DATA)
 
