@@ -1,7 +1,7 @@
 # $Id$
 
 AC_PREREQ(2.57)
-AC_INIT([libXpm], 3.5.4.2, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXpm)
+AC_INIT([libXpm], 3.5.5, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXpm)
 AC_CONFIG_SRCDIR([Makefile.am])
 AM_INIT_AUTOMAKE([dist-bzip2])
 
