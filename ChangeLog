@@ -1,5 +1,9 @@
 2006-06-02  Alan Coopersmith  <alan.coopersmith@sun.com>
 
+	* src/create.c (xpmParseDataAndCreate): 
+	Coverity #1432: Returned without freeing storage "hints_cmt"
+	(in error case when xpmHashTableInit failed)
+	
 	* src/parse.c (xpmParseData): 
 	Coverity #1415: Returned without freeing storage "hints_cmt"
 	(in error case when xpmHashTableInit failed)
