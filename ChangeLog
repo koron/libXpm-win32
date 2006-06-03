@@ -1,5 +1,10 @@
 2006-06-02  Alan Coopersmith  <alan.coopersmith@sun.com>
 
+	* src/hashtab.c (xpmHashTableInit): 
+	Always initialize atomTable to NULL, so xpmHashTableFree() doesn't
+	try to free a random value from the stack if xpmHashTableInit returns
+	an error.
+
 	* src/create.c (xpmParseDataAndCreate): 
 	Coverity #1432: Returned without freeing storage "hints_cmt"
 	(in error case when xpmHashTableInit failed)
