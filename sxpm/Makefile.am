@@ -42,6 +42,14 @@ SUFFIXES = .$(APP_MAN_SUFFIX) .man
 .man.$(APP_MAN_SUFFIX):
 	sed $(MAN_SUBSTS) < $< > $@
 
+if USE_GETTEXT
+noinst_DATA = sxpm.po
+
+sxpm.po: $(sxpm_SOURCES)
+	xgettext -c"L10N_Comments" -d sxpm -n $(sxpm_SOURCES)
+
+CLEANFILES += sxpm.po
+endif
 endif
 
 EXTRA_DIST = \

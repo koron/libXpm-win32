@@ -37,3 +37,11 @@ SUFFIXES = .$(APP_MAN_SUFFIX) .man
 .man.$(APP_MAN_SUFFIX):
 	sed $(MAN_SUBSTS) < $< > $@
 
+if USE_GETTEXT
+noinst_DATA = cxpm.po
+
+cxpm.po: $(cxpm_SOURCES)
+	xgettext -c"L10N_Comments" -d cxpm -n $(cxpm_SOURCES)
+
+CLEANFILES += cxpm.po
+endif
