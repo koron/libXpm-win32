@@ -1,6 +1,7 @@
 bin_PROGRAMS = cxpm
 
-cxpm_CFLAGS = $(XPM_CFLAGS) -I$(top_srcdir)/src -I$(top_srcdir)/include/X11
+AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/include/X11
+AM_CFLAGS = $(XPM_CFLAGS)
 
 cxpm_SOURCES = cxpm.c
 
