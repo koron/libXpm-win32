@@ -45,8 +45,8 @@ SUFFIXES = .$(APP_MAN_SUFFIX) .man
 if USE_GETTEXT
 noinst_DATA = sxpm.po
 
-sxpm.po: $(sxpm_SOURCES)
-	xgettext -c"L10N_Comments" -d sxpm -n $(sxpm_SOURCES)
+sxpm.po: $(sxpm_SOURCES:%=$(srcdir)/%)
+	xgettext -c"L10N_Comments" -d sxpm -n $(sxpm_SOURCES:%=$(srcdir)/%)
 
 CLEANFILES += sxpm.po
 endif
