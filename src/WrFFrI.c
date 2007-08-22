@@ -139,7 +139,8 @@ XpmWriteFileFromXpmImage(filename, image, info)
 	}
 	if (strchr(name, '-')) {
 	    if (name != new_name) {
-		strcpy(new_name, name);
+		strncpy(new_name, name, sizeof(new_name));
+		new_name[sizeof(new_name)-1] = '\0';
 		name = new_name;
 	    }
 	    /* change '-' to '_' */
