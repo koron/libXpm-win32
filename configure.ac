@@ -12,7 +12,7 @@ AM_CONFIG_HEADER([config.h])
 # Checks for programs.
 AC_PROG_LIBTOOL
 AC_PROG_CC
-AC_PROG_SED
+LT_AC_PROG_SED
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPM, xproto x11)
