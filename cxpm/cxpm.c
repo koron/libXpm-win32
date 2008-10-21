@@ -94,7 +94,7 @@ sUngetc(data, c, file)
 #include "Attrib.c"
 #include "Image.c"
 
-void
+static void
 ErrorMessage(
     int ErrorStatus,
     xpmData *data)
