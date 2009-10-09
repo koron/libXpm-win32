@@ -34,7 +34,7 @@ AC_MSG_CHECKING([where to install localized messages])
 AC_ARG_WITH([localedir], AC_HELP_STRING([--with-localedir=<path>],
 	[Path to install message files in (default: datadir/locale)]),
 	[LOCALEDIR=${withval}], [LOCALEDIR=${datadir}/locale])
-AC_DEFINE_DIR([LOCALEDIR], [LOCALEDIR], [Location of translated messages])
+AX_DEFINE_DIR([LOCALEDIR], [LOCALEDIR], [Location of translated messages])
 if test "x$LOCALEDIR" = "xno" -o "x$USE_GETTEXT" = "xno" ; then
 	AC_MSG_RESULT([nowhere])
 	USE_GETTEXT="no"
