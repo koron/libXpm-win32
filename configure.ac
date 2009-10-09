@@ -6,19 +6,21 @@ AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
 # Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG
-m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
-XORG_MACROS_VERSION(1.2)
+m4_ifndef([XORG_MACROS_VERSION],
+	  [m4_fatal([must install xorg-macros 1.3 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.3)
+
 AM_CONFIG_HEADER([config.h])
 
 # Checks for programs.
 AC_PROG_LIBTOOL
 AC_PROG_CC
 LT_AC_PROG_SED
-XORG_CWARNFLAGS
+
+XORG_DEFAULT_OPTIONS
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPM, xproto x11)
-XPM_CFLAGS="$CWARNFLAGS $XPM_CFLAGS"
 AC_SUBST(XPM_CFLAGS)
 AC_SUBST(XPM_LIBS)
 
@@ -59,12 +61,7 @@ if test x$STAT_ZFILE = xyes ; then
 fi
 
 PKG_CHECK_MODULES(SXPM, xt xext xextproto, build_sxpm=true, build_sxpm=false)
-SXPM_CFLAGS="$CWARNFLAGS $SXPM_CFLAGS"
 AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
-
-XORG_MANPAGE_SECTIONS
-XORG_RELEASE_VERSION
-XORG_CHANGELOG
 
 AC_OUTPUT([Makefile
            src/Makefile
