@@ -16,8 +16,6 @@ EXTRA_DIST = \
 	README.html \
 	README.MSW
 
-EXTRA_DIST += ChangeLog
-MAINTAINERCLEANFILES = ChangeLog
 
 .PHONY: ChangeLog
 
