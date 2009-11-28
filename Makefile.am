@@ -5,6 +5,7 @@ SUBDIRS = src sxpm cxpm
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xpm.pc
+MAINTAINERCLEANFILES = ChangeLog INSTALL
 EXTRA_DIST = \
 	xpm.pc.in \
 	xpm.PS.gz \
