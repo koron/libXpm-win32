@@ -1,8 +1,9 @@
 AC_PREREQ(2.57)
 AC_INIT([libXpm], 3.5.8, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXpm)
 AC_CONFIG_SRCDIR([Makefile.am])
-AM_INIT_AUTOMAKE([foreign dist-bzip2])
+AC_CONFIG_MACRO_DIR([m4])
 
+AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
 
 # Require xorg-macros: XORG_DEFAULT_OPTIONS

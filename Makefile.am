@@ -3,6 +3,8 @@
 
 SUBDIRS = src sxpm cxpm
 
+ACLOCAL_AMFLAGS = -I m4
+
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xpm.pc
 MAINTAINERCLEANFILES = ChangeLog INSTALL
