@@ -21,6 +21,7 @@
  * Except as contained in this notice, the name of GROUPE BULL shall not be
  * used in advertising or otherwise to promote the sale, use or other dealings
  * in this Software without prior written authorization from GROUPE BULL.
+ */
 
 /*****************************************************************************\
 * parse.c:                                                                    *
