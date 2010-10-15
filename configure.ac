@@ -18,8 +18,6 @@ AC_PROG_LIBTOOL
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPM, xproto x11)
-AC_SUBST(XPM_CFLAGS)
-AC_SUBST(XPM_LIBS)
 
 # Checks for functions
 AC_CHECK_FUNCS([strlcat])
