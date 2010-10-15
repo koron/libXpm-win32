@@ -7,7 +7,7 @@ AM_CFLAGS = $(CWARNFLAGS) $(SXPM_CFLAGS)
 
 sxpm_SOURCES = sxpm.c
 
-sxpm_LDADD = $(XPM_LIBS) $(SXPM_LIBS) $(top_builddir)/src/libXpm.la
+sxpm_LDADD = $(SXPM_LIBS) $(top_builddir)/src/libXpm.la
 
 # Man page
 appmandir = $(APP_MAN_DIR)
