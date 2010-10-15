@@ -55,8 +55,9 @@ fi
 PKG_CHECK_MODULES(SXPM, xt xext xextproto, build_sxpm=true, build_sxpm=false)
 AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
 
-AC_OUTPUT([Makefile
-           src/Makefile
-	   sxpm/Makefile
-	   cxpm/Makefile
-	   xpm.pc])
+AC_CONFIG_FILES([Makefile
+                 src/Makefile
+                 sxpm/Makefile
+                 cxpm/Makefile
+                 xpm.pc])
+AC_OUTPUT
