@@ -15,7 +15,6 @@ XORG_DEFAULT_OPTIONS
 
 # Checks for programs.
 AC_PROG_LIBTOOL
-AC_PROG_CC
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPM, xproto x11)
