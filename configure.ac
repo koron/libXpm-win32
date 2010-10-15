@@ -1,11 +1,19 @@
+# Initialize Autoconf
 AC_PREREQ([2.60])
-AC_INIT([libXpm], 3.5.8, [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg], libXpm)
+AC_INIT([libXpm],
+        [3.5.8],
+        [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg],
+        [libXpm])
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 
+# Initialize Automake
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
+
+# Initialize libtool
+AC_PROG_LIBTOOL
 
 # Require X.Org macros 1.8 or later for MAN_SUBSTS set by XORG_MANPAGE_SECTIONS
 m4_ifndef([XORG_MACROS_VERSION],
@@ -13,14 +21,13 @@ m4_ifndef([XORG_MACROS_VERSION],
 XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 
-# Checks for programs.
-AC_PROG_LIBTOOL
-
-# Checks for pkg-config packages
-PKG_CHECK_MODULES(XPM, xproto x11)
-
-# Checks for functions
+# Checks for library functions
 AC_CHECK_FUNCS([strlcat])
+
+# Obtain compiler/linker options for dependencies
+PKG_CHECK_MODULES(XPM, xproto x11)
+PKG_CHECK_MODULES(SXPM, xt xext xextproto, build_sxpm=true, build_sxpm=false)
+AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
 
 # Internationalization & localization support
 AC_SEARCH_LIBS([gettext], [intl], [USE_GETTEXT="yes"], [USE_GETTEXT="no"])
@@ -51,9 +58,6 @@ AC_ARG_ENABLE(stat-zfile,
 if test x$STAT_ZFILE = xyes ; then
 	AC_DEFINE(STAT_ZFILE, 1, [Define to 1 to automatically look for files with .Z & .gz extensions])
 fi
-
-PKG_CHECK_MODULES(SXPM, xt xext xextproto, build_sxpm=true, build_sxpm=false)
-AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
