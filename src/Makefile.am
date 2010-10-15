@@ -2,7 +2,7 @@
 
 lib_LTLIBRARIES=libXpm.la
 
-AM_CPPFLAGS = -I. -I$(top_srcdir)/include/X11/
+AM_CPPFLAGS = -I$(top_srcdir)/include/X11/
 AM_CFLAGS = $(CWARNFLAGS) $(XPM_CFLAGS)
 
 libXpm_la_LDFLAGS = -version-number 4:11:0 -no-undefined
