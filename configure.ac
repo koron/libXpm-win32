@@ -22,9 +22,6 @@ PKG_CHECK_MODULES(XPM, xproto x11)
 AC_SUBST(XPM_CFLAGS)
 AC_SUBST(XPM_LIBS)
 
-# Checks for header files.
-AC_HEADER_STDC
-
 # Checks for functions
 AC_CHECK_FUNCS([strlcat])
 
