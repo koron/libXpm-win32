@@ -25,7 +25,7 @@ AC_CHECK_FUNCS([strlcat])
 # Internationalization & localization support
 AC_SEARCH_LIBS([gettext], [intl], [USE_GETTEXT="yes"], [USE_GETTEXT="no"])
 AC_MSG_CHECKING([where to install localized messages])
-AC_ARG_WITH([localedir], AC_HELP_STRING([--with-localedir=<path>],
+AC_ARG_WITH([localedir], AS_HELP_STRING([--with-localedir=<path>],
 	[Path to install message files in (default: datadir/locale)]),
 	[LOCALEDIR=${withval}], [LOCALEDIR=${datadir}/locale])
 AX_DEFINE_DIR([LOCALEDIR], [LOCALEDIR], [Location of translated messages])
@@ -45,7 +45,7 @@ AM_CONDITIONAL(USE_GETTEXT, test "x$USE_GETTEXT" = "xyes")
 # Optional feature: When ___.xpm is requested, also look for ___.xpm.Z & .gz
 # Replaces ZFILEDEF = -DSTAT_ZFILE in old Imakefile
 AC_ARG_ENABLE(stat-zfile,
-	AC_HELP_STRING([--enable-stat-zfile],
+	AS_HELP_STRING([--enable-stat-zfile],
 			[Search for files with .Z & .gz extensions automatically @<:@default=yes@:>@]),
               [STAT_ZFILE=$enableval], [STAT_ZFILE=yes])
 if test x$STAT_ZFILE = xyes ; then
