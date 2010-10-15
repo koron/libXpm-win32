@@ -2,9 +2,8 @@ if BUILD_SXPM
 
 bin_PROGRAMS = sxpm
 
+AM_CPPFLAGS = -I$(top_srcdir)/include
 AM_CFLAGS = $(CWARNFLAGS) $(SXPM_CFLAGS)
-
-AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include
 
 sxpm_SOURCES = sxpm.c
 
