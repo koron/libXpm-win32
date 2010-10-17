@@ -1,23 +1,16 @@
 # Daniel Stone disowns all copyright on this file; no warranty is given as to its
 # suitability or otherwise.
 
-SUBDIRS = include src sxpm cxpm
+SUBDIRS = doc include src sxpm cxpm
 
 ACLOCAL_AMFLAGS = -I m4
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xpm.pc
-MAINTAINERCLEANFILES = ChangeLog INSTALL
-EXTRA_DIST = \
-	xpm.PS.gz \
-	CHANGES \
-	COPYRIGHT \
-	FAQ.html \
-	FILES \
-	README.AMIGA \
-	README.html \
-	README.MSW
 
+EXTRA_DIST = COPYRIGHT FILES NEWS.old
+
+MAINTAINERCLEANFILES = ChangeLog INSTALL
 
 .PHONY: ChangeLog INSTALL
 

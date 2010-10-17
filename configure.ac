@@ -60,6 +60,7 @@ if test x$STAT_ZFILE = xyes ; then
 fi
 
 AC_CONFIG_FILES([Makefile
+                 doc/Makefile
                  include/Makefile
                  src/Makefile
                  sxpm/Makefile
