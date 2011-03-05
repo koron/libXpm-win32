@@ -29,7 +29,7 @@
 cxpm \- Check an XPM (X PixMap) file - XPM 1, 2, or 3.
 .SH SYNOPSIS
 \fBcxpm\fR
-[\|\fIfilename\fP\|] 
+[\|\fIfilename\fP\|]
 .SH DESCRIPTION
 .PP
 The \fBcxpm\fP program can be used to check the format of any XPM (version 1, 2,

@@ -61,6 +61,7 @@ fi
 AC_CONFIG_FILES([Makefile
                  doc/Makefile
                  include/Makefile
+                 man/Makefile
                  src/Makefile
                  sxpm/Makefile
                  cxpm/Makefile
