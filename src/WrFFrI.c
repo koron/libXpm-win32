@@ -256,8 +256,8 @@ WritePixels(
     unsigned int x, y, h;
 
     h = height - 1;
-    if (cpp != 0 && width >= (UINT_MAX - 3)/cpp) 
-	return XpmNoMemory;    
+    if (cpp != 0 && width >= (UINT_MAX - 3)/cpp)
+	return XpmNoMemory;
     p = buf = (char *) XpmMalloc(width * cpp + 3);
     if (!buf)
 	return (XpmNoMemory);

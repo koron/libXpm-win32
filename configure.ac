@@ -43,7 +43,7 @@ else
 fi
 
 if test "x$USE_GETTEXT" = "xyes" ; then
-	AC_DEFINE([USE_GETTEXT], 1, 
+	AC_DEFINE([USE_GETTEXT], 1,
 		  [Define to 1 if you want to use the gettext() function.])
 fi
 AM_CONDITIONAL(USE_GETTEXT, test "x$USE_GETTEXT" = "xyes")

@@ -98,7 +98,7 @@ extern FILE *popen();
 #ifndef SIZE_MAX
 # ifdef ULONG_MAX
 #  define SIZE_MAX ULONG_MAX
-# else 
+# else
 #  define SIZE_MAX UINT_MAX
 # endif
 #endif
@@ -319,7 +319,7 @@ FUNC(xpmstrdup, char *, (char *s1));
 #define xpmstrdup strdup
 #endif
 
-#ifdef NEED_STRCASECMP                   
+#ifdef NEED_STRCASECMP
 FUNC(xpmstrcasecmp, int, (char *s1, char *s2));
 #else
 #undef xpmstrcasecmp

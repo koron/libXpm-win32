@@ -309,17 +309,17 @@ SetCloseColor(
      * occurred, so we try the next closest color, and so on, until no more
      * colors are within closeness of the target. If we knew that the
      * colormap had changed, we could skip this sequence.
-     * 
+     *
      * If _none_ of the colors within closeness of the target can be allocated,
      * then we can finally be pretty sure that the colormap has actually
      * changed. In this case we try to allocate the original color (again),
      * then try the closecolor stuff (again)...
-     * 
+     *
      * In theory it would be possible for an infinite loop to occur if another
      * process kept changing the colormap every time we sorted it, so we set
      * a maximum on the number of iterations. After this many tries, we use
      * XGrabServer() to ensure that the colormap remains unchanged.
-     * 
+     *
      * This approach gives particularly bad worst case performance - as many as
      * <MaximumIterations> colormap reads and sorts may be needed, and as
      * many as <MaximumIterations> * <ColormapSize> attempted allocations
@@ -816,7 +816,7 @@ XpmCreateImageFromXpmImage(
 
     ErrorStatus = XpmSuccess;
 
-    if (image->ncolors >= UINT_MAX / sizeof(Pixel)) 
+    if (image->ncolors >= UINT_MAX / sizeof(Pixel))
 	return (XpmNoMemory);
 
     /* malloc pixels index tables */
@@ -1692,7 +1692,7 @@ APutImagePixels (
     unsigned char  *array;
     XImage         *tmp_img;
     BOOL            success = FALSE;
-    
+
     array = XpmMalloc ((((width+15)>>4)<<4)*sizeof (*array));
     if (array != NULL)
     {
@@ -1711,7 +1711,7 @@ APutImagePixels (
 	}
 	XpmFree (array);
     }
-    
+
     if (!success)
     {
 	for (y = 0; y < height; ++y)
@@ -1890,7 +1890,7 @@ PutPixel16MSB(
     unsigned long	 pixel)
 {
     unsigned char *addr;
-    
+
     if(x < 0 || y < 0)
     	return 0;
 
@@ -1908,7 +1908,7 @@ PutPixel16LSB(
     unsigned long	 pixel)
 {
     unsigned char *addr;
-    
+
     if(x < 0 || y < 0)
     	return 0;
 
@@ -2092,7 +2092,7 @@ xpmParseDataAndCreate(
 	xpmGetCmt(data, &colors_cmt);
 
     /* malloc pixels index tables */
-    if (ncolors >= UINT_MAX / sizeof(Pixel)) 
+    if (ncolors >= UINT_MAX / sizeof(Pixel))
 	RETURN(XpmNoMemory);
 
     image_pixels = (Pixel *) XpmMalloc(sizeof(Pixel) * ncolors);

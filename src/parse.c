@@ -380,7 +380,7 @@ ParsePixels(
     unsigned int a, x, y;
 
     if ((height > 0 && width >= UINT_MAX / height) ||
-	width * height >= UINT_MAX / sizeof(unsigned int)) 
+	width * height >= UINT_MAX / sizeof(unsigned int))
 	return XpmNoMemory;
 #ifndef FOR_MSW
     iptr2 = (unsigned int *) XpmMalloc(sizeof(unsigned int) * width * height);
