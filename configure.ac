@@ -25,7 +25,7 @@ AC_CHECK_FUNCS([strlcat])
 
 # Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(XPM, xproto x11)
-PKG_CHECK_MODULES(SXPM, xt xext xextproto, build_sxpm=true, build_sxpm=false)
+PKG_CHECK_MODULES(SXPM, x11 xt xext xextproto, build_sxpm=true, build_sxpm=false)
 AM_CONDITIONAL(BUILD_SXPM, test x$build_sxpm = xtrue)
 
 # Internationalization & localization support
