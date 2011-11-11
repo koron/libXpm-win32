@@ -53,7 +53,7 @@
 					 * minus \ and " for string compat
 					 * and ? to avoid ANSI trigraphs. */
 
-static char *printable =
+static const char *printable =
 " .XoO+@#$%&*=-;:>,<1234567890qwertyuipasdfghjklzxcvbnmMNBVCZ\
 ASDFGHJKLPIUYTREWQ!~^/()_`'][{}|";
 

@@ -114,7 +114,8 @@ typedef struct {
     unsigned int line;
     int CommentLength;
     char Comment[XPMMAXCMTLEN];
-    char *Bcmt, *Ecmt, Bos, Eos;
+    const char *Bcmt, *Ecmt;
+    char Bos, Eos;
     int format;			/* 1 if XPM1, 0 otherwise */
 #ifdef CXPMPROG
     int lineNum;
@@ -132,15 +133,15 @@ typedef struct {
 #define SPC ' '
 
 typedef struct {
-    char *type;			/* key word */
-    char *Bcmt;			/* string beginning comments */
-    char *Ecmt;			/* string ending comments */
+    const char *type;		/* key word */
+    const char *Bcmt;		/* string beginning comments */
+    const char *Ecmt;		/* string ending comments */
     char Bos;			/* character beginning strings */
     char Eos;			/* character ending strings */
-    char *Strs;			/* strings separator */
-    char *Dec;			/* data declaration string */
-    char *Boa;			/* string beginning assignment */
-    char *Eoa;			/* string ending assignment */
+    const char *Strs;		/* strings separator */
+    const char *Dec;		/* data declaration string */
+    const char *Boa;		/* string beginning assignment */
+    const char *Eoa;		/* string ending assignment */
 }      xpmDataType;
 
 extern xpmDataType xpmDataTypes[];
@@ -157,7 +158,7 @@ typedef struct {
 /* Maximum number of rgb mnemonics allowed in rgb text file. */
 #define MAX_RGBNAMES 1024
 
-extern char *xpmColorKeys[];
+extern const char *xpmColorKeys[];
 
 #define TRANSPARENT_COLOR "None"	/* this must be a string! */
 
