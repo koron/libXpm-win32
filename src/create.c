@@ -219,7 +219,7 @@ typedef struct {
 }      CloseColor;
 
 static int
-closeness_cmp(Const void *a, Const void *b)
+closeness_cmp(const void *a, const void *b)
 {
     CloseColor *x = (CloseColor *) a, *y = (CloseColor *) b;
 
@@ -1028,7 +1028,7 @@ LFUNC(_putbits, void, (register char *src, int dstoffset,
 
 LFUNC(_XReverse_Bytes, int, (register unsigned char *bpt, register unsigned int nb));
 
-static unsigned char Const _reverse_byte[0x100] = {
+static unsigned char const _reverse_byte[0x100] = {
     0x00, 0x80, 0x40, 0xc0, 0x20, 0xa0, 0x60, 0xe0,
     0x10, 0x90, 0x50, 0xd0, 0x30, 0xb0, 0x70, 0xf0,
     0x08, 0x88, 0x48, 0xc8, 0x28, 0xa8, 0x68, 0xe8,
@@ -1146,9 +1146,9 @@ xpm_znormalizeimagebits(
     }
 }
 
-static unsigned char Const _lomask[0x09] = {
+static unsigned char const _lomask[0x09] = {
 0x00, 0x01, 0x03, 0x07, 0x0f, 0x1f, 0x3f, 0x7f, 0xff};
-static unsigned char Const _himask[0x09] = {
+static unsigned char const _himask[0x09] = {
 0xff, 0xfe, 0xfc, 0xf8, 0xf0, 0xe0, 0xc0, 0x80, 0x00};
 
 static void
