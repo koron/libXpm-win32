@@ -312,6 +312,7 @@ FUNC(xpmstrdup, char *, (char *s1));
 #else
 #undef xpmstrdup
 #define xpmstrdup strdup
+#include <string.h>
 #endif
 
 #ifdef NEED_STRCASECMP
@@ -319,6 +320,7 @@ FUNC(xpmstrcasecmp, int, (char *s1, char *s2));
 #else
 #undef xpmstrcasecmp
 #define xpmstrcasecmp strcasecmp
+#include <strings.h>
 #endif
 
 FUNC(xpmatoui, unsigned int,
