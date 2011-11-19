@@ -221,7 +221,7 @@ typedef struct {
 static int
 closeness_cmp(const void *a, const void *b)
 {
-    CloseColor *x = (CloseColor *) a, *y = (CloseColor *) b;
+    const CloseColor *x = (const CloseColor *) a, *y = (const CloseColor *) b;
 
     /* cast to int as qsort requires */
     return (int) (x->closeness - y->closeness);
