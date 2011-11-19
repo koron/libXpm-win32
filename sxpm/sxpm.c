@@ -110,7 +110,7 @@ static char *plaid[] = {
 static Colormap colormap;
 
 void Usage(void);
-void ErrorMessage(int ErrorStatus, char *tag);
+void ErrorMessage(int ErrorStatus, const char *tag);
 void Punt(int i);
 void VersionInfo(void);
 void kinput(Widget widget, char *tag, XEvent *xe, Boolean *b);
@@ -615,7 +615,7 @@ if no input is specified sxpm reads from standard input.\n\
 void
 ErrorMessage(
     int		 ErrorStatus,
-    char	*tag)
+    const char	*tag)
 {
     char *error = NULL;
     char *warning = NULL;
