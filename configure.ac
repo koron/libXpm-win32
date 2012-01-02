@@ -58,6 +58,15 @@ if test x$STAT_ZFILE = xyes ; then
 	AC_DEFINE(STAT_ZFILE, 1, [Define to 1 to automatically look for files with .Z & .gz extensions])
 fi
 
+
+case $host_os in
+	*mingw*)
+                AC_DEFINE(NO_ZPIPE, 1, [Define to 1 to disable decompression via pipes])
+	;;
+	*)
+	;;
+esac
+
 AC_CONFIG_FILES([Makefile
                  doc/Makefile
                  include/Makefile
