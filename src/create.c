@@ -1733,7 +1733,7 @@ MSWPutImagePixels(
 {
     unsigned int *data = pixelindex;
     unsigned int x, y;
-    HBITMAP obm;
+    HGDIOBJ obm;
 
     obm = SelectObject(*dc, image->bitmap);
     for (y = 0; y < height; y++) {
@@ -2334,7 +2334,7 @@ ParseAndPutPixels(
 	    unsigned short colidx[256];
 #ifdef FOR_MSW
 	    HDC shapedc;
-	    HBITMAP obm, sobm;
+	    HGDIOBJ obm, sobm;
 
 	    if ( shapeimage ) {
 		shapedc = CreateCompatibleDC(*dc);
