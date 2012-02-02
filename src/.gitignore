@@ -1,0 +1,8 @@
+*.obj
+libXpm.def
+libXpm.dll
+libXpm.dll.manifest
+libXpm.exp
+libXpm.lib
+libXpm.map
+tags

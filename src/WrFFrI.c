@@ -50,6 +50,14 @@
 #include "errno.h"
 #endif
 
+#ifdef FOR_MSW
+# include <io.h>
+# include <fcntl.h>
+# define O_WRONLY       _O_WRONLY
+# define O_CREAT        _O_CREAT
+# define O_TRUNC        _O_TRUNC
+#endif
+
 /* MS Windows define a function called WriteFile @#%#&!!! */
 LFUNC(xpmWriteFile, int, (FILE *file, XpmImage *image, char *name,
 			  XpmInfo *info));
@@ -328,7 +336,7 @@ OpenWriteFile(
 #ifndef NO_ZPIPE
 	size_t len;
 #endif
-	int fd = open(filename, O_WRONLY|O_CREAT|O_TRUNC, 0644);
+	int fd = _open(filename, O_WRONLY|O_CREAT|O_TRUNC, 0644);
 	if ( fd < 0 )
 	    return(XpmOpenFailed);
 #ifndef NO_ZPIPE

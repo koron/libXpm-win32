@@ -141,7 +141,7 @@ XDefaultColormap(Display *display, Screen *screen)
 /* convert hex color names,
    wrong digits (not a-f,A-F,0-9) are treated as zero */
 static int 
-hexCharToInt(c)
+hexCharToInt(char c)
 {
     int r;
 
@@ -188,7 +188,7 @@ rgbFromHex(char *hex, int *r, int *g, int *b)
 
 /* Color related functions */
 int 
-XParseColor(Display *d, Colormap *cmap, char *name, XColor *color)
+XParseColor(Display *d, Colormap cmap, char *name, XColor *color)
 {
     int r, g, b;			/* only 8 bit values used */
     int okay;
@@ -223,7 +223,7 @@ XAllocColor(Display *d, Colormap cmap, XColor *color)
     return (1);
 }
 void 
-XQueryColors(Display *display, Colormap *colormap,
+XQueryColors(Display *display, Colormap colormap,
 	     XColor *xcolors, int ncolors)
 {
 /* under X this fills the rgb values to given .pixel */
