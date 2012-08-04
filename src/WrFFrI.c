@@ -42,20 +42,17 @@
 #endif
 #include "XpmI.h"
 
+#ifdef FOR_MSW
+# include <io.h>
+# include <fcntl.h>
+#endif
+
 #ifndef NO_ZPIPE
 #include "sys/wait.h"
 #include "sys/types.h"
 #include "fcntl.h"
 #include "unistd.h"
 #include "errno.h"
-#endif
-
-#ifdef FOR_MSW
-# include <io.h>
-# include <fcntl.h>
-# define O_WRONLY       _O_WRONLY
-# define O_CREAT        _O_CREAT
-# define O_TRUNC        _O_TRUNC
 #endif
 
 /* MS Windows define a function called WriteFile @#%#&!!! */
@@ -337,7 +334,7 @@ OpenWriteFile(
 #ifndef NO_ZPIPE
 	size_t len;
 #endif
-	int fd = _open(filename, O_WRONLY|O_CREAT|O_TRUNC, 0644);
+	int fd = open(filename, O_WRONLY|O_CREAT|O_TRUNC, 0644);
 	if ( fd < 0 )
 	    return(XpmOpenFailed);
 #ifndef NO_ZPIPE
