@@ -4,7 +4,10 @@ SRC =	Attrib.c CrBufFrI.c CrDatFrI.c CrIFrBuf.c CrIFrDat.c Image.c Info.c \
 
 OBJ = $(SRC:.c=.obj)
 
-CFLAGS = /nologo /I../include/X11 /DFOR_MSW=1 /Ox /MD
+CFLAGS = /nologo /I../include/X11 /Ox /MD /W3 \
+	 /DFOR_MSW=1 \
+	 /D_CRT_SECURE_NO_WARNINGS=1
+
 LFLAGS = /NOLOGO
 
 !IFDEF OPT
