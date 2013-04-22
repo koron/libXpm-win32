@@ -346,8 +346,10 @@ OpenWriteFile(
 	    mdata->stream.file = fdopen(fd, "w");
 	    mdata->type = XPMFILE;
 	}
-	if (!mdata->stream.file)
+	if (!mdata->stream.file) {
+	    close(fd);
 	    return (XpmOpenFailed);
+	}
     }
     return (XpmSuccess);
 }
