@@ -63,7 +63,7 @@ LFUNC(WritePixels, int, (FILE *file, unsigned int width, unsigned int height,
 LFUNC(WriteExtensions, void, (FILE *file, XpmExtension *ext,
 			      unsigned int num));
 
-LFUNC(OpenWriteFile, int, (char *filename, xpmData *mdata));
+LFUNC(OpenWriteFile, int, (const char *filename, xpmData *mdata));
 LFUNC(xpmDataClose, void, (xpmData *mdata));
 
 int
@@ -319,7 +319,7 @@ FUNC(xpmPipeThrough, FILE*, (int fd,
  */
 static int
 OpenWriteFile(
-    char	*filename,
+    const char	*filename,
     xpmData	*mdata)
 {
     if (!filename) {

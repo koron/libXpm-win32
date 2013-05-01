@@ -49,7 +49,7 @@
 #endif
 #endif
 
-LFUNC(OpenReadFile, int, (char *filename, xpmData *mdata));
+LFUNC(OpenReadFile, int, (const char *filename, xpmData *mdata));
 LFUNC(xpmDataClose, void, (xpmData *mdata));
 
 FUNC(xpmPipeThrough, FILE*, (int fd,
@@ -194,7 +194,7 @@ fail2:
  */
 static int
 OpenReadFile(
-    char	*filename,
+    const char	*filename,
     xpmData	*mdata)
 {
     if (!filename) {
