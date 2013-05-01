@@ -61,7 +61,7 @@ FUNC(xpmPipeThrough, FILE*, (int fd,
 int
 XpmReadFileToImage(
     Display		 *display,
-    char		 *filename,
+    const char		 *filename,
     XImage		**image_return,
     XImage		**shapeimage_return,
     XpmAttributes	 *attributes)
@@ -104,7 +104,7 @@ XpmReadFileToImage(
 
 int
 XpmReadFileToXpmImage(
-    char	*filename,
+    const char	*filename,
     XpmImage	*image,
     XpmInfo	*info)
 {

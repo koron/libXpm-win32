@@ -69,7 +69,7 @@ LFUNC(xpmDataClose, void, (xpmData *mdata));
 int
 XpmWriteFileFromImage(
     Display		*display,
-    char		*filename,
+    const char		*filename,
     XImage		*image,
     XImage		*shapeimage,
     XpmAttributes	*attributes)
@@ -99,7 +99,7 @@ XpmWriteFileFromImage(
 
 int
 XpmWriteFileFromXpmImage(
-    char	*filename,
+    const char	*filename,
     XpmImage	*image,
     XpmInfo	*info)
 {
