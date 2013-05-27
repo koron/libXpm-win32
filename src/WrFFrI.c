@@ -45,10 +45,11 @@
 #ifndef NO_ZPIPE
 #include "sys/wait.h"
 #include "sys/types.h"
-#include "fcntl.h"
 #include "unistd.h"
 #include "errno.h"
 #endif
+
+#include "fcntl.h"
 
 /* MS Windows define a function called WriteFile @#%#&!!! */
 LFUNC(xpmWriteFile, int, (FILE *file, XpmImage *image, const char *name,
