@@ -45,6 +45,7 @@
 #include <sys/wait.h>
 #else
 #ifdef FOR_MSW
+#include <io.h>
 #include <fcntl.h>
 #endif
 #endif

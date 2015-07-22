@@ -42,6 +42,10 @@
 #endif
 #include "XpmI.h"
 
+#ifdef FOR_MSW
+# include <io.h>
+#endif
+
 #ifndef NO_ZPIPE
 #include "sys/wait.h"
 #include "sys/types.h"
