@@ -139,7 +139,7 @@ HashTableGrows(xpmHashTable *table)
     xpmHashAtom *atomTable = table->atomTable;
     unsigned int size = table->size;
     xpmHashAtom *t, *p;
-    unsigned int i;
+    int i;
     unsigned int oldSize = size;
 
     t = atomTable;

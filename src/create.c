@@ -347,10 +347,10 @@ SetCloseColor(
 
 	    closenesses[i].cols_index = i;
 	    closenesses[i].closeness =
-		COLOR_FACTOR * (abs((long) col->red - (long) cols[i].red)
-				+ abs((long) col->green - (long) cols[i].green)
-				+ abs((long) col->blue - (long) cols[i].blue))
-		+ BRIGHTNESS_FACTOR * abs(((long) col->red +
+		COLOR_FACTOR * (labs((long) col->red - (long) cols[i].red)
+				+ labs((long) col->green - (long) cols[i].green)
+				+ labs((long) col->blue - (long) cols[i].blue))
+		+ BRIGHTNESS_FACTOR * labs(((long) col->red +
 					   (long) col->green +
 					   (long) col->blue)
 					   - ((long) cols[i].red +
@@ -1733,7 +1733,7 @@ MSWPutImagePixels(
 {
     unsigned int *data = pixelindex;
     unsigned int x, y;
-    HGDIOBJ obm;
+    HBITMAP obm;
 
     obm = SelectObject(*dc, image->bitmap);
     for (y = 0; y < height; y++) {
@@ -2334,7 +2334,7 @@ ParseAndPutPixels(
 	    unsigned short colidx[256];
 #ifdef FOR_MSW
 	    HDC shapedc;
-	    HGDIOBJ obm, sobm;
+	    HBITMAP obm, sobm;
 
 	    if ( shapeimage ) {
 		shapedc = CreateCompatibleDC(*dc);

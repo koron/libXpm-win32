@@ -140,8 +140,8 @@ XDefaultColormap(Display *display, Screen *screen)
 
 /* convert hex color names,
    wrong digits (not a-f,A-F,0-9) are treated as zero */
-static int 
-hexCharToInt(char c)
+static int
+hexCharToInt(c)
 {
     int r;
 

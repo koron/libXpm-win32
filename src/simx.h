@@ -103,9 +103,9 @@ extern "C" {
     FUNC(XDefaultDepth, int, (Display *d, Screen *s));
 
 /* color related */
-    FUNC(XParseColor, int, (Display *, Colormap, char *, XColor *));
+    FUNC(XParseColor, int, (Display *, Colormap *, char *, XColor *));
     FUNC(XAllocColor, int, (Display *, Colormap, XColor *));
-    FUNC(XQueryColors, void, (Display *display, Colormap colormap,
+    FUNC(XQueryColors, void, (Display *display, Colormap *colormap,
 			      XColor *xcolors, int ncolors));
     FUNC(XFreeColors, int, (Display *d, Colormap cmap,
 			    unsigned long pixels[],
@@ -147,7 +147,6 @@ typedef BOOL Bool;		/* take MSW bool */
 #define O_RDONLY _O_RDONLY
 #define rindex strrchr
 #define strdup _strdup
-#define snprintf _snprintf
 
 
 #endif /* def FOR_MSW */
