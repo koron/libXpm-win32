@@ -147,7 +147,9 @@ typedef BOOL Bool;		/* take MSW bool */
 #define O_RDONLY _O_RDONLY
 #define rindex strrchr
 #define strdup _strdup
+#if defined(_MSC_VER) && _MSC_VER < 1900
 #define snprintf _snprintf
+#endif
 
 
 #endif /* def FOR_MSW */
