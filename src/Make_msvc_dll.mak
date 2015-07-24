@@ -37,7 +37,6 @@ OUTPUT_NAME = libXpm
 OUTPUT = $(OUTPUT_NAME).dll
 
 DEFINES =	/D_CRT_SECURE_NO_WARNINGS=1 \
-		/D_BIND_TO_CURRENT_VCLIBS_VERSION=1 \
 		/DFOR_MSW=1
 
 INCLUDES =	/I ..\include\X11
@@ -46,6 +45,13 @@ CCFLAGS =	$(DEFINES) $(INCLUDES) /wd 4996
 CPPFLAGS =	$(DEFINES) $(INCLUDES)
 
 LINKFLAGS =	/MAP:libXpm.map
+
+!ifdef USE_STATIC_CRT
+CVARS =		$(cvarsmt)
+!else
+CVARS =		$(cvarsdll)
+DEFINES =	$(DEFINES) /D_BIND_TO_CURRENT_VCLIBS_VERSION=1
+!endif
 
 ############################################################################
 # WINDOWS BUILD SETTINGS.
@@ -85,19 +91,19 @@ rebuild : clean tags build
 .PHONY: build clean rebuild
 
 .c.obj ::
-	$(CC) $(cdebug) $(cflags) $(cvarsdll) $(CCFLAGS) /c $<
+	$(CC) $(cdebug) $(cflags) $(CVARS) $(CCFLAGS) /c $<
 
 .cpp.obj ::
-	$(CC) $(cdebug) $(cflags) $(cvarsdll) $(CPPFLAGS) /c $<
+	$(CC) $(cdebug) $(cflags) $(CVARS) $(CPPFLAGS) /c $<
 
 $(OUTPUT_NAME).exe : $(OBJS) $(RESOBJS)
-	$(link) $(ldebug) $(guilflags) $(guilibsdll) \
+	$(link) $(ldebug) $(guilflags) $(guilibs) \
 		/OUT:$@ $(LINKFLAGS) $(OBJS) $(RESOBJS) $(LIBS)
 	IF EXIST $@.manifest \
 	    mt -nologo -manifest $@.manifest -outputresource:$@;1
 
 $(OUTPUT_NAME).dll : $(OBJS) $(RESOBJS) $(DLLDEF)
-	$(link) /NOLOGO $(ldebug) $(dlllflags) $(conlibsdll) \
+	$(link) /NOLOGO $(ldebug) $(dlllflags) $(conlibs) \
 		/OUT:$@ /DEF:$(DLLDEF) $(LINKFLAGS) $(OBJS) $(RESOBJS) $(LIBS)
 	IF EXIST $@.manifest \
 	    mt -nologo -manifest $@.manifest -outputresource:$@;2
