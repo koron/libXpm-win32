@@ -1,6 +1,11 @@
 # USAGE:
+#
 #  Build debug version:		nmake
 #  Build release version:	nmake nodebug=1
+#
+#  Build without MSVCRT: 	nmake nomsvcrt=1
+#  Build release version without MSVCRT:
+#  				nmake nodebug=1 nomsvcrt=1
 
 ############################################################################
 # PROJECT SETTINGS.
@@ -37,7 +42,6 @@ OUTPUT_NAME = libXpm
 OUTPUT = $(OUTPUT_NAME).dll
 
 DEFINES =	/D_CRT_SECURE_NO_WARNINGS=1 \
-		/D_BIND_TO_CURRENT_VCLIBS_VERSION=1 \
 		/DFOR_MSW=1
 
 INCLUDES =	/I ..\include\X11
@@ -58,6 +62,17 @@ _WIN32_IE = 0x0600
 
 ############################################################################
 # DON'T CHANGE BELOW.
+
+!IFDEF NOMSVCRT
+_CVARS = $(cvarsmt)
+_LIBS_EXE = $(guilibsmt)
+_LIBS_DLL = $(conlibsmt)
+!ELSE
+DEFINES = $(DEFINES) /D_BIND_TO_CURRENT_VCLIBS_VERSION=1
+_CVARS = $(cvarsdll)
+_LIBS_EXE = $(guilibsdll)
+_LIBS_DLL = $(conlibsdll)
+!ENDIF
 
 OBJS1 = $(SRCS:.cpp=.obj)
 OBJS = $(OBJS1:.c=.obj)
@@ -85,20 +100,19 @@ rebuild : clean tags build
 .PHONY: build clean rebuild
 
 .c.obj ::
-	$(CC) $(cdebug) $(cflags) $(cvarsdll) $(CCFLAGS) /c $<
+	$(CC) $(cdebug) $(cflags) $(_CVARS) $(CCFLAGS) /c $<
 
 .cpp.obj ::
-	$(CC) $(cdebug) $(cflags) $(cvarsdll) $(CPPFLAGS) /c $<
+	$(CC) $(cdebug) $(cflags) $(_CVARS) $(CPPFLAGS) /c $<
 
 $(OUTPUT_NAME).exe : $(OBJS) $(RESOBJS)
-	$(link) $(ldebug) $(guilflags) $(guilibsdll) \
+	$(link) $(ldebug) $(guilflags) $(_LIBS_EXE) \
 		/OUT:$@ $(LINKFLAGS) $(OBJS) $(RESOBJS) $(LIBS)
 	IF EXIST $@.manifest \
 	    mt -nologo -manifest $@.manifest -outputresource:$@;1
 
 $(OUTPUT_NAME).dll : $(OBJS) $(RESOBJS) $(DLLDEF)
-	$(link) /NOLOGO $(ldebug) $(dlllflags) $(conlibsdll) \
+	$(link) /NOLOGO $(ldebug) $(dlllflags) $(_LIBS_DLL) \
 		/OUT:$@ /DEF:$(DLLDEF) $(LINKFLAGS) $(OBJS) $(RESOBJS) $(LIBS)
 	IF EXIST $@.manifest \
 	    mt -nologo -manifest $@.manifest -outputresource:$@;2
-
