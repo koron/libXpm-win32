@@ -44,7 +44,6 @@
 
 #ifdef FOR_MSW
 # include <io.h>
-# include <fcntl.h>
 #endif
 
 #ifndef NO_ZPIPE
