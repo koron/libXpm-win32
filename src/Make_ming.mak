@@ -27,13 +27,16 @@ CFLAGS =	-I../include/X11 -I. \
 		-DFOR_MSW=1
 OBJS = $(subst .c,.o,$(SRCS))
 
-all : libXpm.dll
+all : libXpm.dll libXpm.a
 .c.o ::
 	gcc $(CFLAGS) -c $<
 
 libXpm.dll : $(OBJS)
 	gcc -shared -o $@ $(OBJS) -lgdi32
 
+libXpm.a : $(OBJS)
+	ar r $@ $?
+
 clean :
-	rm -f *.o *.dll
+	rm -f *.o *.dll *.a
 
