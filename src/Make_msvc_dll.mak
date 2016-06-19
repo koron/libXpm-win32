@@ -58,7 +58,12 @@ APPVER = 5.0
 TARGET = WINNT
 TARGETLANG = LANG_JAPANESE
 _WIN32_IE = 0x0600
+
+!IFDEF SDK_INCLUDE_DIR
+!INCLUDE $(SDK_INCLUDE_DIR)\Win32.Mak
+!ELSE
 !INCLUDE <Win32.Mak>
+!ENDIF
 
 ############################################################################
 # DON'T CHANGE BELOW.
