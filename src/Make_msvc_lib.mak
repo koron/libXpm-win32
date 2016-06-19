@@ -34,8 +34,6 @@ default: libXpm.lib
 clean:
 	-DEL /F $(OBJ)
 	-DEL /F libXpm.lib
-	-DEL /F libXpm.exp
-	-DEL /F libXpm.map
 
 libXpm.lib: $(OBJ)
 	LIB $(LFLAGS) $(OBJ) /OUT:libXpm.lib
