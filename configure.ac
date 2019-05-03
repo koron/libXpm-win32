@@ -21,6 +21,7 @@ XORG_DEFAULT_OPTIONS
 
 # Checks for library functions
 AC_CHECK_FUNCS([strlcat])
+AC_CHECK_FUNC([fork],[], AC_DEFINE(NO_ZPIPE))
 
 # Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(XPM, xproto x11)
