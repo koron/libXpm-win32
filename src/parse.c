@@ -246,19 +246,19 @@ xpmParseColors(
 	     * read pixel value
 	     */
 	    if (cpp >= UINT_MAX - 1) {
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmNoMemory);
+		ErrorStatus = XpmNoMemory;
+		goto error;
 	    }
 	    color->string = (char *) XpmMalloc(cpp + 1);
 	    if (!color->string) {
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmNoMemory);
+		ErrorStatus = XpmNoMemory;
+		goto error;
 	    }
 	    for (b = 0, s = color->string; b < cpp; b++, s++) {
 		int c = xpmGetC(data);
 		if (c < 0) {
-		    xpmFreeColorTable(colorTable, ncolors);
-		    return (XpmFileInvalid);
+		    ErrorStatus = XpmFileInvalid;
+		    goto error;
 		}
 		*s = (char) c;
 	    }
@@ -271,8 +271,7 @@ xpmParseColors(
 		ErrorStatus =
 		    xpmHashIntern(hashtable, color->string, HashAtomData(a));
 		if (ErrorStatus != XpmSuccess) {
-		    xpmFreeColorTable(colorTable, ncolors);
-		    return (ErrorStatus);
+		    goto error;
 		}
 	    }
 
@@ -295,8 +294,8 @@ xpmParseColors(
 			len = strlen(curbuf) + 1;
 			s = (char *) XpmMalloc(len);
 			if (!s) {
-			    xpmFreeColorTable(colorTable, ncolors);
-			    return (XpmNoMemory);
+			    ErrorStatus = XpmNoMemory;
+			    goto error;
 			}
 			defaults[curkey] = s;
 			memcpy(s, curbuf, len);
@@ -306,8 +305,8 @@ xpmParseColors(
 		    lastwaskey = 1;
 		} else {
 		    if (!curkey) {	/* key without value */
-			xpmFreeColorTable(colorTable, ncolors);
-			return (XpmFileInvalid);
+			ErrorStatus = XpmFileInvalid;
+			goto error;
 		    }
 		    if (!lastwaskey) {
                         if (!xstrlcat(curbuf, " ", sizeof(curbuf))) { /* append space */
@@ -324,14 +323,14 @@ xpmParseColors(
 		}
 	    }
 	    if (!curkey) {		/* key without value */
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmFileInvalid);
+		ErrorStatus = XpmFileInvalid;
+		goto error;
 	    }
 	    len = strlen(curbuf) + 1; /* integer overflow just theoretically possible */
 	    s = defaults[curkey] = (char *) XpmMalloc(len);
 	    if (!s) {
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmNoMemory);
+		ErrorStatus = XpmNoMemory;
+		goto error;
 	    }
 	    memcpy(s, curbuf, len);
 	}
@@ -347,19 +346,19 @@ xpmParseColors(
 	     * read pixel value
 	     */
 	    if (cpp >= UINT_MAX - 1) {
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmNoMemory);
+		ErrorStatus = XpmNoMemory;
+		goto error;
 	    }
 	    color->string = (char *) XpmMalloc(cpp + 1);
 	    if (!color->string) {
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmNoMemory);
+		ErrorStatus = XpmNoMemory;
+		goto error;
 	    }
 	    for (b = 0, s = color->string; b < cpp; b++, s++) {
 		int c = xpmGetC(data);
 		if (c < 0) {
-		    xpmFreeColorTable(colorTable, ncolors);
-		    return (XpmFileInvalid);
+		    ErrorStatus = XpmFileInvalid;
+		    goto error;
 		}
 		*s = (char) c;
 	    }
@@ -372,8 +371,7 @@ xpmParseColors(
 		ErrorStatus =
 		    xpmHashIntern(hashtable, color->string, HashAtomData(a));
 		if (ErrorStatus != XpmSuccess) {
-		    xpmFreeColorTable(colorTable, ncolors);
-		    return (ErrorStatus);
+		    goto error;
 		}
 	    }
 
@@ -398,8 +396,8 @@ xpmParseColors(
 	    len = strlen(curbuf) + 1;
 	    s = (char *) XpmMalloc(len);
 	    if (!s) {
-		xpmFreeColorTable(colorTable, ncolors);
-		return (XpmNoMemory);
+		ErrorStatus = XpmNoMemory;
+		goto error;
 	    }
 	    memcpy(s, curbuf, len);
 	    color->c_color = s;
