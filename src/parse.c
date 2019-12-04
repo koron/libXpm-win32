@@ -47,23 +47,43 @@
 #include <ctype.h>
 #include <string.h>
 
+/**
+ * like strlcat() but returns true on success and false if the string got
+ * truncated.
+ */
+static inline Bool
+xstrlcat(char *dst, const char *src, size_t dstsize)
+{
 #if defined(HAS_STRLCAT) || defined(HAVE_STRLCAT)
-# define STRLCAT(dst, src, dstsize) do { \
-  	if (strlcat(dst, src, dstsize) >= (dstsize)) \
-	    return (XpmFileInvalid); } while(0)
-# define STRLCPY(dst, src, dstsize) do { \
-  	if (strlcpy(dst, src, dstsize) >= (dstsize)) \
-	    return (XpmFileInvalid); } while(0)
+    return strlcat(dst, src, dstsize) < dstsize;
 #else
-# define STRLCAT(dst, src, dstsize) do { \
-	if ((strlen(dst) + strlen(src)) < (dstsize)) \
- 	    strcat(dst, src); \
-	else return (XpmFileInvalid); } while(0)
-# define STRLCPY(dst, src, dstsize) do { \
-	if (strlen(src) < (dstsize)) \
- 	    strcpy(dst, src); \
-	else return (XpmFileInvalid); } while(0)
+    if ((strlen(dst) + strlen(src)) < dstsize) {
+        strcat(dst, src);
+        return True;
+    } else {
+        return False;
+    }
 #endif
+}
+
+/**
+ * like strlcpy() but returns true on success and false if the string got
+ * truncated.
+ */
+static inline Bool
+xstrlcpy(char *dst, const char *src, size_t dstsize)
+{
+#if defined(HAS_STRLCAT) || defined(HAVE_STRLCAT)
+    return strlcpy(dst, src, dstsize) < dstsize;
+#else
+    if (strlen(src) < dstsize) {
+        strcpy(dst, src);
+        return True;
+    } else {
+        return False;
+    }
+#endif
+}
 
 LFUNC(ParsePixels, int, (xpmData *data, unsigned int width,
 			 unsigned int height, unsigned int ncolors,
@@ -289,10 +309,17 @@ xpmParseColors(
 			xpmFreeColorTable(colorTable, ncolors);
 			return (XpmFileInvalid);
 		    }
-		    if (!lastwaskey)
-			STRLCAT(curbuf, " ", sizeof(curbuf));/* append space */
+		    if (!lastwaskey) {
+                        if (!xstrlcat(curbuf, " ", sizeof(curbuf))) { /* append space */
+                            ErrorStatus = XpmFileInvalid;
+                            goto error;
+                        }
+                    }
 		    buf[l] = '\0';
-		    STRLCAT(curbuf, buf, sizeof(curbuf)); /* append buf */
+		    if (!xstrlcat(curbuf, buf, sizeof(curbuf))) { /* append buf */
+                        ErrorStatus = XpmFileInvalid;
+                        goto error;
+                    }
 		    lastwaskey = 0;
 		}
 	    }
@@ -356,10 +383,17 @@ xpmParseColors(
 	    xpmNextString(data);	/* get to the next string */
 	    *curbuf = '\0';		/* init curbuf */
 	    while ((l = xpmNextWord(data, buf, BUFSIZ))) {
-		if (*curbuf != '\0')
-		    STRLCAT(curbuf, " ", sizeof(curbuf));/* append space */
+		if (*curbuf != '\0') {
+		    if (!xstrlcat(curbuf, " ", sizeof(curbuf))) { /* append space */
+                        ErrorStatus = XpmFileInvalid;
+                        goto error;
+                    }
+                }
 		buf[l] = '\0';
-		STRLCAT(curbuf, buf, sizeof(curbuf));	/* append buf */
+		if (!xstrlcat(curbuf, buf, sizeof(curbuf))) {	/* append buf */
+                    ErrorStatus = XpmFileInvalid;
+                    goto error;
+                }
 	    }
 	    len = strlen(curbuf) + 1;
 	    s = (char *) XpmMalloc(len);
@@ -376,6 +410,10 @@ xpmParseColors(
     }
     *colorTablePtr = colorTable;
     return (XpmSuccess);
+
+error:
+    xpmFreeColorTable(colorTable, ncolors);
+    return ErrorStatus;
 }
 
 static int
