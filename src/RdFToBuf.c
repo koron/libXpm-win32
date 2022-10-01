@@ -89,6 +89,10 @@ XpmReadFileToBuffer(
 	return XpmOpenFailed;
     }
     len = stats.st_size;
+    if (len < 0 || len >= SIZE_MAX) {
+	fclose(fp);
+	return XpmOpenFailed;
+    }
     ptr = (char *) XpmMalloc(len + 1);
     if (!ptr) {
 	fclose(fp);
